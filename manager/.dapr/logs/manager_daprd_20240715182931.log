@@ -1,0 +1,67 @@
+Starting Dapr with id manager. HTTP Port: 49647. gRPC Port: 49648
+Checking if Dapr sidecar is listening on HTTP port 49647
+time="2024-07-15T18:29:32.0514421+03:00" level=info msg="Starting Dapr Runtime -- version 1.13.5 -- commit e490e58f62110ecdc430d2f39d57428729a487ea" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.0514421+03:00" level=info msg="Log level set to: info" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.0514421+03:00" level=warning msg="mTLS is disabled. Skipping certificate request and tls validation" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.security type=log ver=1.13.5
+time="2024-07-15T18:29:32.0542047+03:00" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.14" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.0554252+03:00" level=info msg="standalone mode configured" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.0559685+03:00" level=info msg="app id: manager" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.0559685+03:00" level=info msg="metrics server started on :49649/" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.0565531+03:00" level=info msg="Dapr trace sampler initialized: DaprTraceSampler(P=1.000000)" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.1558612+03:00" level=info msg="local service entry announced: manager -> 192.168.1.157:49650" app_id=manager component="nr (mdns/v1)" instance=DESKTOP-Q56Q0JP scope=dapr.contrib type=log ver=1.13.5
+time="2024-07-15T18:29:32.1558612+03:00" level=info msg="Initialized name resolution to mdns" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.1588726+03:00" level=info msg="Loading components…" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.1922799+03:00" level=info msg="Component loaded: pubsub (pubsub.redis/v1)" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.processor type=log ver=1.13.5
+time="2024-07-15T18:29:32.1951174+03:00" level=info msg="Waiting for all outstanding components to be processed…" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.206435+03:00" level=info msg="Using 'statestore' as actor state store" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.processor.state type=log ver=1.13.5
+time="2024-07-15T18:29:32.2075988+03:00" level=info msg="Component loaded: statestore (state.redis/v1)" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.processor type=log ver=1.13.5
+time="2024-07-15T18:29:32.2075988+03:00" level=info msg="All outstanding components processed" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.2075988+03:00" level=info msg="Loading endpoints…" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.2086782+03:00" level=info msg="Waiting for all outstanding http endpoints to be processed…" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.2086782+03:00" level=info msg="All outstanding http endpoints processed" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.2086782+03:00" level=warning msg="App channel is not initialized. Did you configure an app-port?" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.channels type=log ver=1.13.5
+time="2024-07-15T18:29:32.2092126+03:00" level=info msg="gRPC server listening on TCP address: :49648" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.grpc.api type=log ver=1.13.5
+time="2024-07-15T18:29:32.2092126+03:00" level=info msg="Enabled gRPC tracing middleware" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.grpc.api type=log ver=1.13.5
+time="2024-07-15T18:29:32.2092126+03:00" level=info msg="Enabled gRPC metrics middleware" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.grpc.api type=log ver=1.13.5
+time="2024-07-15T18:29:32.20976+03:00" level=info msg="Registering workflow engine for gRPC endpoint: [::]:49648" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.grpc.api type=log ver=1.13.5
+time="2024-07-15T18:29:32.20976+03:00" level=info msg="API gRPC server is running on port 49648" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.20976+03:00" level=info msg="Enabled max body size HTTP middleware with size 4 MB" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.http type=log ver=1.13.5
+time="2024-07-15T18:29:32.20976+03:00" level=info msg="Enabled tracing HTTP middleware" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.http type=log ver=1.13.5
+time="2024-07-15T18:29:32.20976+03:00" level=info msg="Enabled metrics HTTP middleware" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.http type=log ver=1.13.5
+time="2024-07-15T18:29:32.2102983+03:00" level=info msg="HTTP server listening on TCP address: :49647" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.http type=log ver=1.13.5
+time="2024-07-15T18:29:32.2108338+03:00" level=info msg="HTTP server is running on port 49647" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.2108338+03:00" level=info msg="The request body size parameter is: 4" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.2108338+03:00" level=info msg="gRPC server listening on TCP address: :49650" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.grpc.internal type=log ver=1.13.5
+time="2024-07-15T18:29:32.2108338+03:00" level=info msg="Enabled gRPC tracing middleware" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.grpc.internal type=log ver=1.13.5
+time="2024-07-15T18:29:32.2108338+03:00" level=info msg="Enabled gRPC metrics middleware" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.grpc.internal type=log ver=1.13.5
+time="2024-07-15T18:29:32.2108338+03:00" level=info msg="Internal gRPC server is running on port 49650" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.2113905+03:00" level=info msg="Configuring actors placement provider 'placement'. Configuration: 'placement:localhost:6050'" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.actor type=log ver=1.13.5
+time="2024-07-15T18:29:32.2113905+03:00" level=info msg="Configuring actor reminders provider 'default'. Configuration: ''" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.actor type=log ver=1.13.5
+time="2024-07-15T18:29:32.2113905+03:00" level=info msg="Actor runtime started. Actor idle timeout: 1h0m0s. Actor scan interval: 30s" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.actor type=log ver=1.13.5
+time="2024-07-15T18:29:32.2113905+03:00" level=info msg="Configuring workflow engine with actors backend" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.2113905+03:00" level=info msg="Registering component for dapr workflow engine..." app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.2113905+03:00" level=info msg="Initializing Dapr workflow component" app_id=manager component="dapr (workflow.dapr/v1)" instance=DESKTOP-Q56Q0JP scope=dapr.contrib type=log ver=1.13.5
+time="2024-07-15T18:29:32.2113905+03:00" level=info msg="Workflow engine initialized." app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.211916+03:00" level=warning msg="app channel not initialized, make sure -app-port is specified if pubsub subscription is required" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.processor.pubsub type=log ver=1.13.5
+time="2024-07-15T18:29:32.211916+03:00" level=warning msg="failed to read from bindings: app channel not initialized " app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:32.211916+03:00" level=info msg="dapr initialized. Status: Running. Init Elapsed 156ms" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+Checking if Dapr sidecar is listening on GRPC port 49648
+Dapr sidecar is up and running.
+Updating metadata for cliPID: 14464
+Updating metadata for app command: npm run start
+Updating metadata for appPID: 10684
+You're up and running! Dapr logs will appear here.
+
+time="2024-07-15T18:29:48.3635366+03:00" level=info msg="Received signal 'interrupt'; beginning shutdown" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.signals type=log ver=1.13.5
+time="2024-07-15T18:29:48.3640475+03:00" level=info msg="Dapr is shutting down" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:48.3648608+03:00" level=info msg="Shutting down component statestore (state.redis/v1)" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:48.3653786+03:00" level=info msg="stopping mDNS server for app id: manager" app_id=manager component="nr (mdns/v1)" instance=DESKTOP-Q56Q0JP scope=dapr.contrib type=log ver=1.13.5
+time="2024-07-15T18:29:48.3653786+03:00" level=info msg="Shutting down component pubsub (pubsub.redis/v1)" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:48.3653786+03:00" level=info msg="Shutting down workflow engine" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:48.3653786+03:00" level=info msg="Dapr runtime stopped" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:48.3653786+03:00" level=info msg="Shutting down actor" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+time="2024-07-15T18:29:48.3653786+03:00" level=info msg="Closing HTTP server [::]:49647…" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime.http type=log ver=1.13.5
+time="2024-07-15T18:29:48.3653786+03:00" level=info msg="Daprd shutdown gracefully" app_id=manager instance=DESKTOP-Q56Q0JP scope=dapr.runtime type=log ver=1.13.5
+
+termination signal received: shutting down
+Error exiting Dapr: TerminateProcess: Access is denied.

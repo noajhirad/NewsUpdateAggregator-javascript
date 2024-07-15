@@ -1,0 +1,8 @@
+== APP - manager == 
+== APP - manager == > manager@1.0.0 start
+== APP - manager == > node index.js
+== APP - manager == 
+== APP - manager == {"errorCode":"ERR_DIRECT_INVOKE","message":"failed getting app id either from the URL path or the header dapr-app-id"}
+Exited App successfully
+
+termination signal received: shutting down

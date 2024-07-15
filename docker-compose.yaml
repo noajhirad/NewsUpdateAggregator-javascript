@@ -1,0 +1,86 @@
+version: "3"
+services:
+  ############################
+  # manager + manager sidecar
+  ############################
+  manager:
+    build: ./manager
+    # ports:
+    #   - "5000:5000"
+    # depends_on:
+    # - redis
+    # - placement
+    networks:
+      - hello-dapr
+    # environment:
+    #   - DAPR_HTTP_PORT=3500
+    #   - DAPR_HOST=http://localhost
+
+  manager-dapr:
+    image: "daprio/daprd:edge"
+    command: [
+        "./daprd",
+        "-app-id",
+        "manager",
+        "-app-port",
+        "5000",
+        # "-placement-host-address",
+        # "placement:50006",
+        "-dapr-http-port",
+        "3501",
+        "-components-path",
+        "/components",
+      ]
+    volumes:
+      - "./components/:/components"
+    depends_on:
+      - manager
+    network_mode: "service:manager"
+
+  ####################################################
+  # notification-engine + notification-engine sidecar
+  ####################################################
+  notification-engine:
+    build: ./notification-engine
+    ports:
+      - "3000:3000"
+    # depends_on:
+    # - redis
+    # - placement
+    networks:
+      - hello-dapr
+
+  notification-engine-dapr:
+    image: "daprio/daprd:edge"
+    command: [
+        "./daprd",
+        "-app-id",
+        "notification-engine",
+        "-app-port",
+        "3000",
+        # "-placement-host-address",
+        # "placement:50006",
+        "-dapr-http-port",
+        "3500",
+        "-components-path",
+        "/components",
+      ]
+    volumes:
+      - "./components/:/components"
+    depends_on:
+      - notification-engine
+    network_mode: "service:notification-engine"
+
+  #########################
+  # Dapr placement service
+  #########################
+  # placement:
+  #   image: "daprio/dapr"
+  #   command: ["./placement", "-port", "50006"]
+  #   ports:
+  #     - "50006:50006"
+  #   networks:
+  #     - hello-dapr
+
+networks:
+  hello-dapr: null

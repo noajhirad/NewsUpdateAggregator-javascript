@@ -1,0 +1,11 @@
+version: 1
+common:
+  resourcesPath: ./components/
+apps:
+  - appID: notification-engine
+    appDirPath: ./notification-engine/
+    command: ["npm", "start"]
+    appPort: 3000
+  - appID: manager
+    appDirPath: ./manager/
+    command: ["npm", "run", "start"]
