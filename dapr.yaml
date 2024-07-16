@@ -4,8 +4,12 @@ common:
 apps:
   - appID: notification-engine
     appDirPath: ./notification-engine/
-    command: ["npm", "start"]
+    command: ["npm", "run", "start"]
     appPort: 3000
   - appID: manager
     appDirPath: ./manager/
     command: ["npm", "run", "start"]
+  - appID: users-accessor
+    appDirPath: ./users-accessor/
+    command: ["npm", "run", "start"]
+    appPort: 4000

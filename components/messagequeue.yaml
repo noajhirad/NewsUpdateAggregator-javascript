@@ -3,19 +3,16 @@ kind: Component
 metadata:
   name: messagequeue
 spec:
-  type: pubsub.rabbitmq
+  type: bindings.rabbitmq
   version: v1
   metadata:
-  - name: host
-    value: "amqp://localhost:5672"
   - name: queueName
     value: "messagequeue"
+  - name: host
+    value: "amqp://rabbitmq:5672"
   - name: durable
     value: "false"
   - name: deletedWhenUnused
     value: "true"
   - name: ttlInSeconds
     value: 10
-scopes:
-  - manager
-  - notification-engine

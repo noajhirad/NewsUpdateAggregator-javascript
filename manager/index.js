@@ -1,27 +1,52 @@
 import { DaprClient, HttpMethod } from "@dapr/dapr";
+import express from "express";
 
-// const DAPR_HOST = "http://localhost"; //process.env.DAPR_HOST || "http://localhost";
-// const DAPR_HTTP_PORT = "3500"; //process.env.DAPR_HTTP_PORT || "3500";
+const app = express();
+app.use(express.json());
+const port = 5000;
 
 const daprHost = "127.0.0.1"; // Dapr Sidecar Host
 const daprPort = "3501"; // Dapr Sidecar Port of this Example Server
-const serviceAppId = "notification-engine";
+const notificationAppId = "notification-engine";
+const usersAccessorAppId = "users-accessor";
 const serviceMethod = "";
 
 const client = new DaprClient({ daprHost, daprPort });
 
-async function func() {
-  const res = await client.invoker.invoke(
-    serviceAppId,
-    serviceMethod,
-    HttpMethod.POST,
-    {
-      email: "noaj1997@gmail.com",
-      text: "yay!",
-    }
-  );
-  //   const text = await res.text();
-  console.log(res);
-}
+app.get("/", async (req, res) => {
+  // const res = await client.invoker.invoke(
+  //   notificationAppId,
+  //   serviceMethod,
+  //   HttpMethod.POST,
+  //   {
+  //     email: "noaj1997@gmail.com",
+  //     text: "yay!",
+  //   }
+  // );
 
-func();
+  const messageToQueue = {
+    email: "noaj1997@gmail.com",
+    text: "yay!",
+  };
+
+  const bindingName = "messagequeue";
+  const bindingOperation = "create";
+
+  const result = await client.binding.send(
+    bindingName,
+    bindingOperation,
+    messageToQueue
+  );
+
+  // const response = await client.invoker.invoke(
+  //   usersAccessorAppId,
+  //   serviceMethod,
+  //   HttpMethod.GET
+  // );
+
+  //res.send(result);
+});
+
+app.listen(port, () => {
+  console.log(`manager listening on port ${port}`);
+});
