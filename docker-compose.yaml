@@ -88,8 +88,12 @@ services:
     build: ./users-accessor
     ports:
       - "4000:4000"
+    # volumes:
+    #   - .:/app
     networks:
       - hello-dapr
+    links:
+      - mongodb
   
   users-accessor-dapr:
     image: "daprio/daprd:edge"
@@ -120,6 +124,18 @@ services:
       - "15672:15672"
     networks:
       - hello-dapr
+  
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - data:/data/db
+    networks:
+      - hello-dapr
 
 networks:
   hello-dapr: null
+
+volumes:
+  data:
