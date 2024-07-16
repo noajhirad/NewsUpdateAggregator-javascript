@@ -11,16 +11,14 @@ const serviceMethod = "";
 const client = new DaprClient({ daprHost, daprPort });
 
 async function func() {
-  //   const res = await fetch(
-  //     `${DAPR_HOST}:${DAPR_HTTP_PORT}/v1.0/invoke/notification-engine/method/`,
-  //     {
-  //       headers: { "dapr-app-id": "notification-engine" },
-  //     }
-  //   );
   const res = await client.invoker.invoke(
     serviceAppId,
     serviceMethod,
-    HttpMethod.GET
+    HttpMethod.POST,
+    {
+      email: "noaj1997@gmail.com",
+      text: "yay!",
+    }
   );
   //   const text = await res.text();
   console.log(res);

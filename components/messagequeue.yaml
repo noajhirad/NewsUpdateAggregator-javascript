@@ -1,0 +1,21 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: messagequeue
+spec:
+  type: pubsub.rabbitmq
+  version: v1
+  metadata:
+  - name: host
+    value: "amqp://localhost:5672"
+  - name: queueName
+    value: "messagequeue"
+  - name: durable
+    value: "false"
+  - name: deletedWhenUnused
+    value: "true"
+  - name: ttlInSeconds
+    value: 10
+scopes:
+  - manager
+  - notification-engine
