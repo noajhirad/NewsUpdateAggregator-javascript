@@ -3,33 +3,36 @@ services:
   ############################
   # manager + manager sidecar
   ############################
+
   manager:
     build: ./manager
-    # ports:
-    #   - "5000:5000"
-    # depends_on:
-    # - redis
-    # - placement
+    ports:
+      - "5000:5000"
+    depends_on:
+      - rabbitmq
     networks:
       - hello-dapr
-    # environment:
-    #   - DAPR_HTTP_PORT=3500
-    #   - DAPR_HOST=http://localhost
 
   manager-dapr:
     image: "daprio/daprd:edge"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 10
+        window: 120s
     command: [
         "./daprd",
         "-app-id",
         "manager",
         "-app-port",
         "5000",
-        # "-placement-host-address",
-        # "placement:50006",
         "-dapr-http-port",
         "3501",
         "-components-path",
-        "/components",
+        "./components",
+        "--log-level",
+        "warn"
       ]
     volumes:
       - "./components/:/components"
@@ -40,30 +43,36 @@ services:
   ####################################################
   # notification-engine + notification-engine sidecar
   ####################################################
+
   notification-engine:
     build: ./notification-engine
     ports:
       - "3000:3000"
-    # depends_on:
-    # - redis
-    # - placement
+    depends_on:
+      - rabbitmq
     networks:
       - hello-dapr
 
   notification-engine-dapr:
     image: "daprio/daprd:edge"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 10
+        window: 120s
     command: [
         "./daprd",
         "-app-id",
         "notification-engine",
         "-app-port",
         "3000",
-        # "-placement-host-address",
-        # "placement:50006",
         "-dapr-http-port",
         "3500",
         "-components-path",
-        "/components",
+        "./components",
+        "--log-level",
+        "warn"
       ]
     volumes:
       - "./components/:/components"
@@ -71,16 +80,46 @@ services:
       - notification-engine
     network_mode: "service:notification-engine"
 
-  #########################
-  # Dapr placement service
-  #########################
-  # placement:
-  #   image: "daprio/dapr"
-  #   command: ["./placement", "-port", "50006"]
-  #   ports:
-  #     - "50006:50006"
-  #   networks:
-  #     - hello-dapr
+  ##########################################
+  # users-accessor + users-accessor sidecar
+  ##########################################
+  
+  users-accessor:
+    build: ./users-accessor
+    ports:
+      - "4000:4000"
+    networks:
+      - hello-dapr
+  
+  users-accessor-dapr:
+    image: "daprio/daprd:edge"
+    command: [
+        "./daprd",
+        "-app-id",
+        "users-accessor",
+        "-app-port",
+        "4000",
+        "-dapr-http-port",
+        "3502",
+        # "-components-path",
+        # "./components",
+        "--log-level",
+        "warn"
+      ]
+    volumes:
+      - "./components/:/components"
+    depends_on:
+      - users-accessor
+    network_mode: "service:users-accessor"
+  
+  
+  rabbitmq:
+    image: "rabbitmq:management-alpine"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - hello-dapr
 
 networks:
   hello-dapr: null

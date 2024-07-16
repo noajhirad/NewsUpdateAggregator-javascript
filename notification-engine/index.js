@@ -7,10 +7,13 @@ const app = express();
 app.use(express.json());
 const port = 3000;
 
-app.post("/", (req, res) => {
-  console.log(req.body.email, req.body.text);
+app.post("/messagequeue", (req, res) => {
+  // console.log(req.body.email, req.body.text);
   sendMail(req.body.email, req.body.text);
-  res.send("some response");
+  res.send({
+    email: req.body.email,
+    text: req.body.text,
+  });
 });
 
 app.listen(port, () => {
