@@ -1,8 +1,0 @@
-== APP - manager == 
-== APP - manager == > manager@1.0.0 start
-== APP - manager == > node index.js
-== APP - manager == 
-== APP - manager == Hello World!
-Exited App successfully
-
-termination signal received: shutting down

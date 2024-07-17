@@ -1,8 +1,0 @@
-== APP - manager == 
-== APP - manager == > manager@1.0.0 start
-== APP - manager == > node index.js
-== APP - manager == 
-== APP - manager == {"errorCode":"ERR_DIRECT_INVOKE","message":"failed to invoke, id: notification-engine, err: rpc error: code = Internal desc = error invoking app channel: Get \"http://127.0.0.1:5002\": dial tcp 127.0.0.1:5002: connectex: No connection could be made because the target machine actively refused it."}
-Exited App successfully
-
-termination signal received: shutting down

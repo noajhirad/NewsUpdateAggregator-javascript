@@ -2,17 +2,12 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
+const Users = require("./dbInfo");
 
 const app = express();
 app.use(express.json());
 const port = 4000;
 
-const usersSchema = new mongoose.Schema({
-  email: String,
-  preferences: [String],
-});
-
-const Users = mongoose.model("Users", usersSchema);
 mongoose.connect("mongodb://mongodb:27017/users", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -26,11 +21,71 @@ app.listen(port, () => {
   console.log(`users accessor listening on port ${port}`);
 });
 
-app.post("/", async (req, res) => {
-  const user = await Users.create({
-    email: req.body.email,
-    preferences: req.body.preferences,
-  });
+app.post("/newuser", async (req, res) => {
+  if (db.readyState === 1) {
+    // if db is connected
+    console.log(req.body.email, req.body.preferences);
+    const exists = await Users.findOne({ email: req.body.email });
+    console.log(exists);
+    if (!exists) {
+      try {
+        const user = await Users.create({
+          email: req.body.email,
+          preferences: req.body.preferences,
+        });
 
-  res.send("ok!");
+        res.status(200).send("Added new user successfully.");
+      } catch (error) {
+        res
+          .status(400)
+          .send("Can't add new user to db. Error: " + error.message);
+      }
+    } else {
+      res.status(400).send("Email already exist.");
+    }
+  } else {
+    res.status(500).send("Internal error, db is not connected.");
+  }
+});
+
+app.post("/updateuser", async (req, res) => {
+  if (db.readyState === 1) {
+    // if db is connected
+    if (Users.exists({ email: req.body.email })) {
+      try {
+        await Users.updateOne(
+          { email: req.body.email },
+          { preferences: req.body.preferences }
+        );
+
+        res.status(200).send("Updated user preferences successfully.");
+      } catch (error) {
+        res.status(400).send("Can't update user. Error: " + error.message);
+      }
+    } else {
+      res.status(400).send("Can't find email in db.");
+    }
+  } else {
+    res.status(500).send("Internal error, db is not connected.");
+  }
+});
+
+app.delete("/unsubscribe", async (req, res) => {
+  if (db.readyState === 1) {
+    // if db is connected
+    try {
+      const user = await Users.deleteMany({ email: req.body.email });
+
+      res.status(200).send("Deleted user successfully.");
+    } catch (error) {
+      res.status(400).send("Can't delete user. Error: " + error.message);
+    }
+  } else {
+    res.status(500).send("Internal error, db is not connected.");
+  }
+});
+
+app.get("/", async (req, res) => {
+  const result = await Users.find();
+  res.send(result);
 });
