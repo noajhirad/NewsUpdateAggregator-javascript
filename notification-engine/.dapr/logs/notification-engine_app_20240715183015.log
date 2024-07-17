@@ -1,7 +1,0 @@
-== APP - notification-engine == 
-== APP - notification-engine == > notification-engine@1.0.0 start
-== APP - notification-engine == > node index.js
-== APP - notification-engine == 
-== APP - notification-engine == notification engine listening on port 3000
-
-termination signal received: shutting down
