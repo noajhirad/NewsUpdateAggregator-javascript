@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "2fd16abd-55dc-4617-b518-f62322fe248f",
+		"name": "News Aggregator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23596316"
+	},
+	"item": [
+		{
+			"name": "new user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"preferences\": [\"Technology\",\"Travel\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/newuser",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"newuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user preferences",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"preferences\": [\"Education\", \"Food\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/updateuser",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"updateuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "unsubscribe",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"{{email}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/unsubscribe",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"unsubscribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new user 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"preferences\": [\"Technology\",\"Travel\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/newuser",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"newuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send email with news",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/?email={{email}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{{email}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "email",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

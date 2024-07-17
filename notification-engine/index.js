@@ -7,15 +7,6 @@ const app = express();
 app.use(express.json());
 const port = 3000;
 
-app.post("/messagequeue", (req, res) => {
-  // console.log(req.body.email, req.body.text);
-  sendMail(req.body.email, req.body.text);
-  res.send({
-    email: req.body.email,
-    text: req.body.text,
-  });
-});
-
 app.listen(port, () => {
   console.log(`notification engine listening on port ${port}`);
 });
@@ -30,11 +21,19 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+app.post("/messagequeue", (req, res) => {
+  sendMail(req.body.email, req.body.text);
+  res.send({
+    email: req.body.email,
+    text: req.body.text,
+  });
+});
+
 function sendMail(email, text) {
   const mainOptions = {
     from: "noaj1997@gmail.com",
     to: email,
-    subject: "from madre padre project",
+    subject: "Your Top Article Picks For You",
     text: text,
   };
 
