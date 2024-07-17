@@ -24,9 +24,7 @@ app.listen(port, () => {
 app.post("/newuser", async (req, res) => {
   if (db.readyState === 1) {
     // if db is connected
-    console.log(req.body.email, req.body.preferences);
     const exists = await Users.findOne({ email: req.body.email });
-    console.log(exists);
     if (!exists) {
       try {
         const user = await Users.create({
@@ -51,7 +49,8 @@ app.post("/newuser", async (req, res) => {
 app.post("/updateuser", async (req, res) => {
   if (db.readyState === 1) {
     // if db is connected
-    if (Users.exists({ email: req.body.email })) {
+    const exists = await Users.findOne({ email: req.body.email });
+    if (exists) {
       try {
         await Users.updateOne(
           { email: req.body.email },
@@ -85,7 +84,30 @@ app.delete("/unsubscribe", async (req, res) => {
   }
 });
 
-app.get("/", async (req, res) => {
+app.get("/allusers", async (req, res) => {
   const result = await Users.find();
   res.send(result);
+});
+
+// returns preferences
+app.get("/", async (req, res) => {
+  if (db.readyState === 1) {
+    // if db is connected
+    try {
+      const user = await Users.findOne({ email: req.body.email });
+      if (user) {
+        res.status(200).send(user.preferences);
+      } else {
+        res.status(400).send("Can't find email in db.");
+      }
+    } catch (error) {
+      res
+        .status(400)
+        .send(
+          "Can't return prefernces for this email. Error: " + error.message
+        );
+    }
+  } else {
+    res.status(500).send("Internal error, db is not connected.");
+  }
 });
