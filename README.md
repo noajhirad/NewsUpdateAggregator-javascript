@@ -8,6 +8,14 @@ The Personalized News Update Aggregator is a microservice-based application that
 * **news-engine**: Returns the most interesting articles and their summaries, chosen by AI according to user preferences.
 * **notification-engine**: Receives an email address and text, then sends the requested message to the specified email.
 
+## Technologies Used
+* Node.js: All services are built using Node.js.
+* Docker: All services are containerized, and the solution runs on Docker Compose.
+* Dapr: Used for inter-service communication.
+* RabbitMQ: Utilized as the messaging queue between the manager and notification-engine.
+* MongoDB: Employed as the database.
+* Gemini AI API: Used for AI-based article selection and summarization.
+
 
 ## How to Use the Personalized News Update Aggregator
 
