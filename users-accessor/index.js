@@ -13,7 +13,7 @@ const usersSchema = new mongoose.Schema({
 });
 
 const Users = mongoose.model("Users", usersSchema);
-mongoose.connect("mongodb://mongodb:27017", {
+mongoose.connect("mongodb://mongodb:27017/users", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -26,9 +26,11 @@ app.listen(port, () => {
   console.log(`users accessor listening on port ${port}`);
 });
 
-app.get("/", async (req, res) => {
+app.post("/", async (req, res) => {
   const user = await Users.create({
     email: req.body.email,
     preferences: req.body.preferences,
   });
+
+  res.send("ok!");
 });
