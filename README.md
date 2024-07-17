@@ -10,6 +10,11 @@ The Personalized News Update Aggregator is a microservice-based application that
 
 
 ## How to Use the Personalized News Update Aggregator
+
+### Running the System
+To run the entire system, navigate to the root directory of the project and execute the following command:
+`docker-compose up --build`
+
 ### Creating a New User
 To create a new user, include your email and your preferences for articles from the following list:
 * Technology
