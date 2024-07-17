@@ -39,6 +39,7 @@ To create a new user, include your email and your preferences for articles from 
 The manager is available on port 5000.
 
 **__Create a New User__**
+
 Send a POST request to the endpoint "/newuser" with a JSON body like this example:
 
 `{
@@ -48,6 +49,7 @@ Send a POST request to the endpoint "/newuser" with a JSON body like this exampl
 
 
 **__Update User Preferences__**
+
 Send a POST request to the endpoint "/updateuser" with a JSON body like this example:
 
 `{
@@ -56,6 +58,7 @@ Send a POST request to the endpoint "/updateuser" with a JSON body like this exa
 }`
 
 **__Unsubscribe a User__**
+
 Send a DELETE request to the endpoint "/unsubscribe" with a JSON body like this example:
 
 `{
@@ -63,6 +66,7 @@ Send a DELETE request to the endpoint "/unsubscribe" with a JSON body like this 
 }`
 
 **__Get Top Articles__**
+
 Send a GET request to the endpoint "/" to send an email to the registered user with the top article picks. Include the email query parameter like this example:
 `email=example@example.com`
 
