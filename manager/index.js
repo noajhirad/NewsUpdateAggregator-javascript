@@ -47,6 +47,8 @@ app.get("/", async (req, res) => {
   //res.send(result);
 });
 
+app.post("/newuser", (req, res) => {});
+
 app.listen(port, () => {
   console.log(`manager listening on port ${port}`);
 });
