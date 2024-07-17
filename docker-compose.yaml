@@ -19,7 +19,7 @@ services:
       restart_policy:
         condition: on-failure
         delay: 5s
-        max_attempts: 10
+        max_attempts: 15
         window: 120s
     command: [
         "./daprd",
@@ -59,7 +59,7 @@ services:
       restart_policy:
         condition: on-failure
         delay: 5s
-        max_attempts: 10
+        max_attempts: 15
         window: 120s
     command: [
         "./daprd",
@@ -115,6 +115,36 @@ services:
     depends_on:
       - users-accessor
     network_mode: "service:users-accessor"
+
+  ####################################
+  # news-engine + news-engine sidecar
+  ####################################
+  
+  news-engine:
+    build: ./news-engine
+    ports:
+      - "6000:6000"
+    networks:
+      - hello-dapr
+  
+  news-engine-dapr:
+    image: "daprio/daprd:edge"
+    command: [
+        "./daprd",
+        "-app-id",
+        "news-engine",
+        "-app-port",
+        "6000",
+        "-dapr-http-port",
+        "3503",
+        "--log-level",
+        "warn"
+      ]
+    volumes:
+      - "./components/:/components"
+    depends_on:
+      - news-engine
+    network_mode: "service:news-engine"
   
   
   rabbitmq:

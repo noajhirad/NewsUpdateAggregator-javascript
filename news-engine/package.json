@@ -1,15 +1,16 @@
 {
-  "name": "manager",
+  "name": "news-engine",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dapr/dapr": "^3.3.1",
+    "@google/generative-ai": "^0.15.0",
     "express": "^4.19.2"
   }
 }

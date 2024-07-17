@@ -90,7 +90,7 @@ app.get("/allusers", async (req, res) => {
 });
 
 // returns preferences
-app.get("/", async (req, res) => {
+app.post("/", async (req, res) => {
   if (db.readyState === 1) {
     // if db is connected
     try {
