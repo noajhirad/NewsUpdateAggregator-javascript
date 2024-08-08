@@ -1,0 +1,18 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: messagequeue
+spec:
+  type: bindings.rabbitmq
+  version: v1
+  metadata:
+  - name: queueName
+    value: "messagequeue"
+  - name: host
+    value: "amqp://rabbitmq:5672"
+  - name: durable
+    value: "false"
+  - name: deletedWhenUnused
+    value: "true"
+  - name: ttlInSeconds
+    value: 10
