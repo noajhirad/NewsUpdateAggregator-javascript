@@ -2,6 +2,7 @@
 
 const express = require("express");
 const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
@@ -16,8 +17,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: "noajhirad1997@gmail.com",
-    pass: "iupa wgvv skii epip",
+    user: process.env.SENDER_EMAIL,
+    pass: process.env.PASSWORD,
   },
 });
 

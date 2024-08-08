@@ -2,14 +2,13 @@
 
 const express = require("express");
 const {
-  newsApiKey,
   newsUrl,
   newsSearchQueryParam,
   newsApiKeyQueryParam,
   newsQueryForEnglish,
 } = require("./constants");
-
 const { getTopArticles } = require("./gemini");
+require("dotenv").config();
 
 const app = express();
 
@@ -52,7 +51,7 @@ async function getArticles(preferences) {
     try {
       for (const p of preferences) {
         const result = await fetch(
-          `${newsUrl}?${newsApiKeyQueryParam}=${newsApiKey}&${newsSearchQueryParam}=${p}&${newsQueryForEnglish}`
+          `${newsUrl}?${newsApiKeyQueryParam}=${process.env.NEWS_API_KEY}&${newsSearchQueryParam}=${p}&${newsQueryForEnglish}`
         );
         const json = await result.json();
 
