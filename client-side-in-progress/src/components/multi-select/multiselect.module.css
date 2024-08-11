@@ -1,0 +1,114 @@
+.container {
+    position: relative;
+    width: 30em;
+    /* min-height: 1.5em; */
+    height: 2.75em;
+    border: 2px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 7px;
+    font-size: var(--small-font);
+}
+
+.container:focus {
+    border-color: var(--medium-gray);
+}
+
+.value {
+    flex-grow: 1;
+    display: flex;
+    gap: .5em;
+    flex-wrap: wrap;
+}
+
+.placeHolder {
+    color: var(--medium-gray);
+}
+
+.clearBtn {
+    background: none;
+    color: var(--medium-gray);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.5em;
+}
+
+.clearBtn:focus, .clearBtn:hover {
+    color: var(--dark-gray);
+}
+
+.divider {
+    background-color: var(--medium-gray);
+    height: 100%;
+    width: 2px;
+    align-self: stretch;
+}
+
+.open {
+    translate: 0 130%;
+    border: .35em solid transparent;
+    border-top-color: var(--medium-gray);
+}
+
+.options {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-height: 15em;
+    overflow-y: auto;
+    border: 2px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    width: 30em;
+    left: 0;
+    top: calc(100% + .25em);
+    /* padding: 7px; */
+    background-color: white;
+    z-index: 100;
+    display: none;
+}
+
+.options.show {
+    display: block;
+}
+
+.option {
+    padding: 7px;
+    cursor: pointer;
+    background-color: white;
+    user-select: none;
+}
+
+.option.selected {
+    background-color: var(--lighter-blue);
+}
+
+.option.highlighted {
+    background-color: var(--light-blue);
+}
+
+.optionBadge {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 2px;
+    padding-inline: 6px;
+    gap: 4px;
+    cursor: pointer;
+    background: var(--lighter-gray);
+    outline: none;
+}
+
+.optionBadge:hover {
+    background-color: var(--light-red);
+    border-color: var(--red);
+}
+
+.optionBadge:hover > .clearBtn {
+    color: var(--red);
+}
