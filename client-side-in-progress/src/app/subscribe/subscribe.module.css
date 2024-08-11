@@ -1,0 +1,24 @@
+.email {
+    padding: 7px;
+    font-size: var(--small-font);
+    border-radius: var(--border-radius);
+    border: 2px solid var(--light-gray);
+    height: 2.5em
+}
+
+.email:focus {
+    border-color: var(--medium-gray);
+    outline: none;
+}
+
+.email::placeholder {
+    color: var(--medium-gray);
+}
+
+/* .subscribeBtn {
+    
+} */
+
+.form div {
+    margin-bottom: 20px;
+}
