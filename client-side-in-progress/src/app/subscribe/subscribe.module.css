@@ -15,10 +15,45 @@
     color: var(--medium-gray);
 }
 
-/* .subscribeBtn {
-    
-} */
+.subscribeBtn {
+    font-size: var(--small-font);
+    border: none;
+    outline: none;
+    padding: 7px;
+    border-radius: var(--border-radius);
+    background-color: var(--light-blue);
+    font-weight: var(--bold);
+    color: white;
+}
 
 .form div {
     margin-bottom: 20px;
+}
+
+.message {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.errorMessage {
+    color: var(--red);
+}
+
+.successMessage {
+    color: var(--green);
+}
+
+.message span{
+    font-weight: var(--bolder);
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
 }

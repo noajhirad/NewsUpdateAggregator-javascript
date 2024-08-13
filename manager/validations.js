@@ -9,6 +9,8 @@ function validateEmail(email) {
 }
 
 function validatePreferences(preferences) {
+  if (preferences.length === 0) return false;
+
   for (p of preferences) {
     if (!categories.has(p)) return false;
   }

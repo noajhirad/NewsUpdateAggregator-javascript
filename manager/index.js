@@ -1,5 +1,6 @@
 const { DaprClient, HttpMethod } = require("@dapr/dapr");
 const express = require("express");
+const cors = require("cors");
 const {
   port,
   daprHost,
@@ -13,6 +14,7 @@ const {
 const { validateEmail, validatePreferences } = require("./validations.js");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 const client = new DaprClient({ daprHost, daprPort });
